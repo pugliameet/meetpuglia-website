@@ -28,8 +28,6 @@ jobs:
       - name: Installa le dipendenze
         run: npm ci
       - name: Genera il sito statico
-        env:
-          NEXT_PUBLIC_BASE_PATH: /meetpuglia-website
         run: npm run build
       - name: Configura GitHub Pages
         uses: actions/configure-pages@v5
