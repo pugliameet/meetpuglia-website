@@ -17,32 +17,25 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Scarica il repository
         uses: actions/checkout@v4
-
       - name: Configura Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-
       - name: Installa le dipendenze
         run: npm ci
-
       - name: Genera il sito statico
         env:
           NEXT_PUBLIC_BASE_PATH: /meetpuglia-website
         run: npm run build
-
       - name: Configura GitHub Pages
         uses: actions/configure-pages@v5
-
       - name: Carica il sito generato
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
-
       - name: Pubblica
         uses: actions/deploy-pages@v4
