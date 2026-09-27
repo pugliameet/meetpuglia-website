@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { ExternalLink, MapPin, Smartphone } from "lucide-react";
 
 const APP_STORE_URL = "https://apps.apple.com/it/app/meetpuglia/id6808968011";
@@ -18,13 +19,18 @@ export function DownloadRedirect() {
     if (!isAndroid && !isIOS) return;
 
     const destination = isIOS ? APP_STORE_URL : PLAY_STORE_URL;
-    setMessage(`Apertura di ${isIOS ? "App Store" : "Google Play"}…`);
+    const messageTimer = window.setTimeout(() => {
+      setMessage(`Apertura di ${isIOS ? "App Store" : "Google Play"}…`);
+    }, 0);
 
     const redirectTimer = window.setTimeout(() => {
       window.location.replace(destination);
     }, 450);
 
-    return () => window.clearTimeout(redirectTimer);
+    return () => {
+      window.clearTimeout(messageTimer);
+      window.clearTimeout(redirectTimer);
+    };
   }, []);
 
   return (
@@ -50,7 +56,7 @@ export function DownloadRedirect() {
           </a>
         </div>
 
-        <a className="download-home" href="/">Torna al sito MeetPuglia</a>
+        <Link className="download-home" href="/">Torna al sito MeetPuglia</Link>
       </section>
     </main>
   );

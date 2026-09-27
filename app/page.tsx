@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CalendarDays, MapPin, ShieldCheck, Sparkles, Users } from "lucide-react";
+import { ArrowRight, CalendarDays, Download, MapPin, ShieldCheck, Sparkles, Users } from "lucide-react";
 import { SiteShell } from "./site-shell";
 
 const features = [
@@ -14,6 +14,6 @@ export default function Home() {
     <section id="come-funziona" className="section soft"><p className="kicker">COME FUNZIONA</p><h2 className="section-title">Tutto ciò che serve per partecipare e organizzare.</h2><div className="feature-grid">{features.map(({icon: Icon,title,text})=><article key={title}><Icon/><h3>{title}</h3><p>{text}</p></article>)}</div></section>
     <section className="section split"><div><p className="kicker">PER I PARTECIPANTI</p><h2>Il prossimo ricordo è più vicino di quanto pensi.</h2><p>Esplora gli eventi, controlla luogo, data, durata, disponibilità e condizioni. Per gli eventi a pagamento, il checkout è gestito in modo sicuro tramite Stripe.</p></div><div className="number-list"><p><b>01</b> Cerca ciò che ti interessa</p><p><b>02</b> Leggi tutti i dettagli</p><p><b>03</b> Prenota il tuo posto</p></div></section>
     <section className="section dark-panel"><div><ShieldCheck size={38}/><p className="kicker">CHIAREZZA PRIMA DI TUTTO</p><h2>Regole comprensibili, assistenza reale.</h2><p>Condizioni di cancellazione e rimborso sono consultabili prima dell’acquisto. Per dubbi o problemi puoi contattare direttamente il nostro supporto.</p><div className="actions"><Link className="button light" href="/rimborsi">Rimborsi e cancellazioni</Link><Link className="text-link light-link" href="/termini">Leggi i termini</Link></div></div></section>
-    <section className="section final-cta"><p className="kicker">MEETPUGLIA</p><h2>Stiamo arrivando sugli store.</h2><p>Le applicazioni MeetPuglia per Android e iOS sono in fase di pubblicazione.</p><a className="button" href="mailto:support@meetpuglia.it">Contatta MeetPuglia</a></section>
+    <section className="section final-cta"><p className="kicker">MEETPUGLIA</p><h2>MeetPuglia è disponibile sugli store.</h2><p>Scarica l’app per Android o iOS e inizia a vivere nuove esperienze in Puglia.</p><Link className="button" href="/download">Scarica l’app <Download size={18}/></Link></section>
   </SiteShell>;
 }
